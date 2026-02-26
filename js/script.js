@@ -59,3 +59,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Adicione isso ao final do seu arquivo js
+const navLinks = document.querySelectorAll('.nav-link');
+const menuToggle = document.getElementById('navbarNav');
+const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+
+navLinks.forEach((l) => {
+    l.addEventListener('click', () => { 
+        if (window.innerWidth < 992) { // Só fecha se estiver no mobile
+            bsCollapse.hide(); 
+        }
+    });
+});

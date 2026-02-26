@@ -270,16 +270,66 @@ h1, h2, .navbar-brand {
     filter: grayscale(0%);
 }
 /* Responsividade Geral */
+/* --- AJUSTES DE RESPONSIVIDADE --- */
+
+/* Ajuste para telas pequenas (Celulares) */
 @media (max-width: 768px) {
-    .display-1 { font-size: 3.5rem; } /* Diminui o título principal no celular */
-    .section-title { font-size: 2.5rem; }
-    .avatar-wrapper { width: 130px; height: 130px; } /* Avatares menores no celular */
-    .artist-bio-text { font-size: 1rem; text-align: left; }
-    
-    /* Faz o carrossel ocupar mais espaço no celular */
-    #carouselVoid, [id^="carouselArtista"] {
-        max-width: 100%;
+    .navbar {
+        padding: 10px 0;
+        background: rgba(0, 0, 0, 0.95) !important; /* Navbar sólida no mobile */
     }
+
+    .display-1 { 
+        font-size: 3rem; /* Título menor para não quebrar a tela */
+        line-height: 1.1;
+    }
+
+    .section-title { 
+        font-size: 2.5rem; 
+        margin-bottom: 20px;
+    }
+
+    .about-section {
+        padding: 80px 0;
+    }
+
+    .avatar-wrapper { 
+        width: 140px; 
+        height: 140px; 
+    }
+
+    .artist-detail-section {
+        padding: 60px 0;
+        text-align: center; /* Centraliza textos no mobile */
+    }
+
+    .artist-bio-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* Garante que o vídeo não fique gigante ou cortado */
+    .video-container {
+        margin-bottom: 20px;
+    }
+
+    /* Força carrosséis a ocuparem a largura total no mobile */
+    .carousel, .carousel-inner, .carousel-item img {
+        height: 250px !important; /* Altura menor para telas pequenas */
+        max-width: 100% !important;
+    }
+}
+
+/* Ajuste para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .display-1 { font-size: 5rem; }
+    .carousel-item img { height: 400px; }
+}
+
+/* Correção Global de Transbordamento */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Garante que o carrossel tenha sempre a mesma proporção */
