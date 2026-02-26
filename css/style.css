@@ -21,8 +21,8 @@ h1, h2, h4, .navbar-brand {
 /* --- NAVBAR --- */
 .navbar {
     padding: 15px 0;
-    background: transparent;
-    transition: 0.4s;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
 }
 
 .navbar.scrolled {
@@ -45,13 +45,14 @@ h1, h2, h4, .navbar-brand {
 
 /* --- HERO SECTION --- */
 .hero {
-    height: 100vh;
+    min-height: 100svh; /* usa altura real do viewport mobile */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 100%);
     text-align: center;
+    padding: 120px 15px 80px; /* espaço para navbar fixa */
 }
 
 .hero-overlay {
@@ -68,12 +69,15 @@ h1, h2, h4, .navbar-brand {
 }
 
 .display-1 {
-    font-size: clamp(2.5rem, 11vw, 8rem); /* Texto Fluido para Mobile */
-    line-height: 0.9;
-    letter-spacing: -2px;
+    font-size: clamp(2.2rem, 9vw, 7rem);
+    line-height: 1;
+    letter-spacing: -1px;
     font-weight: 900;
     position: relative;
     z-index: 2;
+    margin-bottom: 20px;
+    word-break: normal;
+    overflow-wrap: anywhere;
 }
 
 .outline-text {
@@ -143,8 +147,9 @@ h1, h2, h4, .navbar-brand {
 .carousel { max-width: 850px; margin: 40px auto; }
 
 .carousel-item img {
-    height: 500px; object-fit: cover;
-    filter: grayscale(100%); transition: 0.5s;
+    width: 100%;
+    height: clamp(250px, 60vw, 500px);
+    object-fit: cover;
 }
 
 .carousel-item img:hover { filter: grayscale(0%); }
@@ -152,49 +157,56 @@ h1, h2, h4, .navbar-brand {
 /* --- RESPONSIVIDADE --- */
 /* --- CORREÇÃO DEFINITIVA PARA MOBILE --- */
 @media (max-width: 768px) {
-    /* Ajuste do Navbar */
-    .navbar {
-        background: rgba(0, 0, 0, 0.95) !important;
-        padding: 10px 0;
+
+    .display-1 {
+        font-size: clamp(2rem, 11vw, 3.5rem);
+        line-height: 1.05;
+        letter-spacing: -0.5px;
+        padding: 0 15px;
     }
 
-    /* AJUSTE DO TÍTULO (O FUTURO É INDEPENDENTE) */
-    .display-1 {
-        /* 10vw garante que o texto ocupe 10% da largura da tela por caractere */
-        /* Isso impede que a palavra 'INDEPENDENTE' quebre ou saia da borda */
-        font-size: 10vw !important; 
-        line-height: 1.1;
-        letter-spacing: -1px;
-        word-wrap: break-word;
-        padding: 0 10px;
+    .display-1 br {
+        display: none; /* remove quebra forçada */
     }
 
     .outline-text {
-        display: inline-block;
-        -webkit-text-stroke: 1px var(--text-color);
+        display: block; /* força INDEPENDENTE ir para linha de baixo */
+        margin-top: 5px;
     }
+}
 
-    /* Ajuste de Seções */
-    .about-section, .artist-detail-section {
-        padding: 60px 0;
-    }
+body {
+    padding-top: 80px; /* compensa navbar fixed-top */
+}
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+.artist-link {
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
 
-    .section-title {
-        border-left: none;
-        border-top: 5px solid var(--accent-color);
-        padding: 15px 0;
-        text-align: center;
-        font-size: 2.2rem;
-    }
+.artist-link:hover {
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
 
-    .avatar-wrapper {
-        width: 130px;
-        height: 130px;
-    }
+.artist-name-label {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.artist-link {
+    text-decoration: none !important;
+}
 
-    /* Ajuste do Carrossel no Mobile */
-    .carousel-item img {
-        height: 250px !important;
-        object-fit: cover;
-    }
+.artist-name-label {
+    color: #ffffff;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.artist-item:hover .artist-name-label {
+    color: var(--accent-color);
 }
