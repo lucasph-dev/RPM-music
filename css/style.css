@@ -1,3 +1,4 @@
+/* 1. CONFIGURAÇÕES GERAIS */
 :root {
     --bg-color: #0b0b0b;
     --accent-color: #eaff00; /* Amarelo Neon */
@@ -9,17 +10,18 @@ body {
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    max-width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-h1, h2, .navbar-brand {
+h1, h2, h3, h4, .navbar-brand {
     font-family: 'Syne', sans-serif;
     text-transform: uppercase;
 }
 
 .text-yellow { color: var(--accent-color); }
 
-/* --- NAVBAR --- */
+/* 2. NAVBAR */
 .navbar {
     padding: 15px 0;
     background: transparent;
@@ -35,13 +37,11 @@ h1, h2, .navbar-brand {
     height: 50px;
     width: auto;
     border-radius: 10px;
-    transition: transform 0.3s ease;
 }
 
 .nav-link {
     font-weight: 400;
     margin-left: 20px;
-    letter-spacing: 1px;
     font-size: 0.9rem;
 }
 
@@ -52,7 +52,7 @@ h1, h2, .navbar-brand {
     font-weight: 700;
 }
 
-/* --- HERO SECTION --- */
+/* 3. HERO SECTION (O FUTURO É INDEPENDENTE) */
 .hero {
     height: 100vh;
     display: flex;
@@ -66,36 +66,33 @@ h1, h2, .navbar-brand {
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: radial-gradient(circle at 50% 50%, rgba(234, 255, 0, 0.05) 0%, transparent 70%);
     animation: pulseGlow 8s infinite alternate;
     z-index: 1;
 }
 
 @keyframes pulseGlow {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.3); opacity: 0.8; }
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.3); opacity: 0.7; }
 }
 
 .hero .container {
     z-index: 2;
     position: relative;
+    padding: 0 20px;
+}
+
+.display-1 {
+    font-size: clamp(2.5rem, 10vw, 8rem); /* Texto fluido que se ajusta à tela */
+    line-height: 0.9;
+    letter-spacing: -2px;
+    font-weight: 900;
 }
 
 .outline-text {
     -webkit-text-stroke: 1px var(--text-color);
     color: transparent;
-}
-
-.display-1 {
-    /* Ajuste fino do clamp para evitar quebras estranhas */
-    font-size: clamp(2.5rem, 12vw, 8rem);
-    line-height: 0.9;
-    letter-spacing: -2px;
-    font-weight: 900;
 }
 
 .btn-main {
@@ -104,7 +101,6 @@ h1, h2, .navbar-brand {
     border: 1px solid var(--text-color);
     padding: 15px 40px;
     font-weight: 700;
-    letter-spacing: 2px;
     transition: 0.4s;
     display: inline-block;
 }
@@ -114,33 +110,30 @@ h1, h2, .navbar-brand {
     color: #000;
 }
 
-/* --- SECTIONS --- */
-.about-section {
+/* 4. SEÇÕES E CONTEÚDO */
+.about-section, .artist-detail-section {
     padding: 100px 0;
 }
 
 .section-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    line-height: 1;
+    font-size: clamp(2rem, 5vw, 4rem);
     border-left: 5px solid var(--accent-color);
     padding-left: 30px;
 }
 
-.artist-detail-section {
-    padding: 80px 0;
-    background-color: #050505;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+.artist-bio-text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
 }
 
-/* --- CAROUSEL & VIDEO --- */
+/* 5. VÍDEO E CARROSSEL */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 */
     height: 0;
     overflow: hidden;
-    background: #000;
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(234, 255, 0, 0.1);
 }
@@ -150,85 +143,55 @@ h1, h2, .navbar-brand {
     top: 0; left: 0; width: 100%; height: 100%;
 }
 
+.avatar-wrapper {
+    width: 180px; height: 180px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    filter: grayscale(100%);
+    transition: 0.4s;
+}
+
+.artist-item:hover .avatar-wrapper {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
 .carousel {
-    max-width: 900px;
+    max-width: 800px;
     margin: 40px auto;
 }
 
 .carousel-item img {
     width: 100%;
-    height: 500px;
+    height: auto;
+    aspect-ratio: 16/9;
     object-fit: cover;
     filter: grayscale(100%);
-    transition: 0.5s;
 }
 
-.carousel-item img:hover {
-    filter: grayscale(0%);
-}
-
-/* --- RESPONSIVIDADE (MOBILE) --- */
+/* 6. RESPONSIVIDADE (MOBILE) */
 @media (max-width: 768px) {
-    .navbar {
-        background: rgba(0, 0, 0, 0.95) !important;
-    }
-
-    .hero {
-        padding: 0 20px;
-    }
-
     .display-1 {
-        /* Garante que o texto caiba sem quebrar palavras ao meio */
-        font-size: 11vw !important;
-        line-height: 1.1;
-        letter-spacing: -1px;
+        font-size: 11vw !important; /* Força o título a caber na largura da tela */
     }
 
-    .outline-text {
-        display: inline-block; /* Evita comportamento de bloco que empurra o texto */
-        -webkit-text-stroke: 1px var(--text-color);
+    .section-title {
+        border-left: none;
+        border-top: 4px solid var(--accent-color);
+        padding: 15px 0 0 0;
+        text-align: center;
     }
 
     .about-section, .artist-detail-section {
         padding: 60px 0;
     }
 
-    .section-title {
-        border-left: none;
-        border-top: 5px solid var(--accent-color);
-        padding-left: 0;
-        padding-top: 15px;
-        text-align: center;
-    }
-
     .avatar-wrapper {
-        width: 140px;
-        height: 140px;
-    }
-
-    .artist-bio-text {
-        text-align: left;
-        font-size: 1rem;
+        width: 130px; height: 130px;
     }
 
     .carousel-item img {
-        height: 300px !important;
-        object-fit: cover;
+        height: 250px;
     }
-}
-
-/* --- INDICADOR SCROLL --- */
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    width: 2px;
-    height: 50px;
-    background: linear-gradient(to bottom, var(--accent-color), transparent);
-    animation: scrollMove 2s infinite;
-}
-
-@keyframes scrollMove {
-    0% { transform: translateY(0); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(20px); opacity: 0; }
 }
