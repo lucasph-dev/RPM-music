@@ -1,0 +1,295 @@
+:root {
+    --bg-color: #0b0b0b;
+    --accent-color: #eaff00; /* Amarelo Neon */
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, .navbar-brand {
+    font-family: 'Syne', sans-serif;
+    text-transform: uppercase;
+}
+
+.text-yellow { color: var(--accent-color); }
+
+/* Navbar */
+.navbar {
+    padding: 30px 0;
+    background: transparent;
+    transition: 0.4s;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px 0;
+}
+
+.nav-link {
+    font-weight: 400;
+    margin-left: 20px;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.nav-btn {
+    background: var(--accent-color);
+    color: #000 !important;
+    padding: 8px 20px !important;
+    font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 100%);
+}
+
+.outline-text {
+    -webkit-text-stroke: 1px var(--text-color);
+    color: transparent;
+}
+
+.display-1 {
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+
+.btn-main {
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 15px 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.btn-main:hover {
+    background: var(--text-color);
+    color: #000;
+}
+
+/* Seção Sobre */
+.about-section {
+    padding: 150px 0;
+}
+
+.section-title {
+    font-size: 4rem;
+    line-height: 1;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 30px;
+}
+
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Indicador de Scroll */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--accent-color), transparent);
+    animation: scrollMove 2s infinite;
+}
+
+@keyframes scrollMove {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(20px); opacity: 0; }
+}
+
+/* Grade de Artistas */
+.avatar-wrapper {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: grayscale(100%);
+}
+
+.artist-item:hover .avatar-wrapper {
+    border-color: var(--accent-color);
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artist-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.artist-name-label {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+
+/* Detalhe do Artista */
+.artist-detail-section {
+    padding: 100px 0;
+    background-color: #050505;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(234, 255, 0, 0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajuste para mostrar a foto inteira sem cortes */
+#carouselVoid .carousel-item img {
+    height: 100%; /* Mantém uma altura fixa para não quebrar o layout */
+    object-fit: contain; /* Faz a imagem caber inteira no espaço, sem cortar */
+    background-color: #000; /* Preenche o fundo com preto caso a foto seja de outra proporção */
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+#carouselVoid .carousel-item img:hover {
+    filter: grayscale(0%);
+}
+
+/* Ajuste opcional para Mobile (celular) */
+@media (max-width: 768px) {
+    #carouselVoid .carousel-item img {
+        height: 300px; /* Diminui a altura em telas menores */
+    }
+}
+/* Estilo para a Bio do Artista */
+.artist-bio-text {
+    color: rgba(255, 255, 255, 0.85); /* Um branco quase total, muito mais nítido */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-align: justify; /* Deixa o bloco de texto mais organizado */
+}
+
+/* Destaque para palavras ou frases importantes dentro da bio */
+.artist-bio-text strong {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Ajuste no título para não "esmagar" o texto */
+.display-3.fw-bold {
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.text-yellow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: block; /* Garante o espaçamento correto */
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+.carousel-item img:hover {
+    filter: grayscale(0%);
+}
+.logo-nav {
+    height: 50px;       /* Ajuste a altura conforme sua logo */
+    width: auto;        /* Mantém a proporção */
+    border-radius: 10px; /* Deixa levemente arredondada */
+    transition: transform 0.3s ease;
+}
+
+.logo-nav:hover {
+    transform: scale(1.05); /* Efeito sutil ao passar o mouse */
+}
+
+/* Ajuste na navbar para não ficar apertada */
+.navbar {
+    padding: 15px 0;
+}
+
+/* Container do Carrossel para limitar o tamanho na tela */
+#carouselVoid {
+    max-width: 800px; /* Define o tamanho máximo da largura */
+    margin: 30px auto; /* Centraliza o carrossel */
+}
+
+/* Ajuste das imagens para enquadramento perfeito */
+#carouselVoid .carousel-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Força a proporção de cinema, evita que fique "altão" */
+    object-fit: cover;    /* Garante que a imagem preencha o espaço sem sobrar borda */
+    object-position: center; /* Foca no meio da foto */
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+#carouselVoid .carousel-item img:hover {
+    filter: grayscale(0%);
+}
+/* Responsividade Geral */
+@media (max-width: 768px) {
+    .display-1 { font-size: 3.5rem; } /* Diminui o título principal no celular */
+    .section-title { font-size: 2.5rem; }
+    .avatar-wrapper { width: 130px; height: 130px; } /* Avatares menores no celular */
+    .artist-bio-text { font-size: 1rem; text-align: left; }
+    
+    /* Faz o carrossel ocupar mais espaço no celular */
+    #carouselVoid, [id^="carouselArtista"] {
+        max-width: 100%;
+    }
+}
+
+/* Garante que o carrossel tenha sempre a mesma proporção */
+.carousel-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* Espaçamento entre seções de artistas */
+.artist-detail-section {
+    padding: 100px 0;
+}
